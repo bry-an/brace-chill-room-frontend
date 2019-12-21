@@ -1,24 +1,16 @@
-# brace-frontend
+# Brace Chill Room
 
-## Project setup
-```
-npm install
-```
+A simple way to join a synced music listening room with Spotify.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Frontend:
+    * Vue
+    * Single route with information about current music playback and that of other logged-in user
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Backend
+    * MongoDB
+    * Store information that can be sent back to other users on the site
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Todo:
+[] Create simple frontend view
+[] Get OAuth with Spotify API working
+[] Integrate Spotify API with frontend to display a user's basic current playback information
