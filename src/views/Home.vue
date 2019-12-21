@@ -6,7 +6,7 @@
     </div>
     <div>
       <h3>First, you should log in to spotify</h3>
-      <button @click="routeToLogin">
+      <button @click="login">
         Login to Spotify
       </button>
     </div>
@@ -15,15 +15,21 @@
 
 <script>
 // @ is an alias to /src
-import API from '@/utils/API';
 
 export default {
   name: 'Home',
   components: {
   },
+  computed: {
+    loginURL() {
+      const baseURL = process.env.VUE_APP_API_BASE_URL;
+      return `${baseURL}/login`;
+    },
+  },
   methods: {
-    routeToLogin() {
-      API.spotifyLogin();
+    login() {
+      console.log(process.env.VUE_APP_API_BASE_URL);
+      window.location = this.loginURL;
     },
   },
 };
