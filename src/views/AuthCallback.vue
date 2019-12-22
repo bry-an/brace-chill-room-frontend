@@ -29,10 +29,9 @@ export default {
     if (!this.origin) {
       this.$router.push({ name: 'home' });
     } else {
-      console.log('setting local storage', this.token, this.refresh);
-      localStorage.setItem('spotify-token', this.token);
-      localStorage.setItem('spotify-refresh-token', this.refresh);
-    //   window.location = this.origin;
+      if (this.token) localStorage.setItem('spotify-token', this.token);
+      if (this.refresh) localStorage.setItem('spotify-refresh-token', this.refresh);
+      window.location = this.origin;
     }
   },
 };

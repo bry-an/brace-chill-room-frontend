@@ -1,29 +1,49 @@
 import axios from 'axios';
 
-const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : '';
-const accessToken = localStorage.getItem('spotify-token');
-
 const getAccessToken = () => {
   let token = null;
   if (typeof localStorage['spotify-token'] !== 'undefined') {
-    token = JSON.parse(localStorage['spotify-token']);
+    token = localStorage['spotify-token'];
     return token;
   }
   return token;
 };
 
+const getRefreshToken = () => {
+  let token = null;
+  if (typeof localStorage['spotify-refresh-token'] !== 'undefined') {
+    token = localStorage['spotify-refresh-token'];
+    return token;
+  }
+  return token;
+};
+
+// const setAccessToken = (token) => {
+//   if (token) {
+//     localStorage.set('spotify-token', token);
+//   }
+// };
+
 const $axios = axios.create({
-  baseUrl: 'https://api.spotify.com/',
+  baseURL: 'https://api.spotify.com/',
   headers: { Authorization: `Bearer ${getAccessToken()}` },
 });
+
 
 export default {
   checkLocalToken() {
     return typeof localStorage['spotify-token'] !== 'undefined';
   },
   async getCurrentPlayingTrack() {
+    const currentWindowLocation = window.location.href;
     const response = await $axios.get('v1/me/player/currently-playing/')
-      .then(data => data.data);
+      .then(data => data.data)
+      .catch((e) => {
+        console.log(e.message);
+        if (e.message === 'Request failed with status code 401') {
+          window.location = `http://localhost:3001/refresh_token?refresh_token=${getRefreshToken()}&origin=${currentWindowLocation}`;
+        }
+      });
     return response;
   },
 
