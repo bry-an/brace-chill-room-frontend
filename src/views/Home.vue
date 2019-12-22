@@ -23,7 +23,7 @@ export default {
   computed: {
     loginURL() {
       const baseURL = process.env.VUE_APP_API_BASE_URL;
-      return `${baseURL}/login`;
+      return `${baseURL}/login/?origin=${window.location}`;
     },
   },
   methods: {

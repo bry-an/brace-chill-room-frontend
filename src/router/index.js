@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import AuthCallback from '../views/AuthCallback.vue';
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,16 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home,
+  },
+  {
+    path: '/auth-callback/',
+    component: AuthCallback,
+    props: route => ({
+      origin: route.query.origin,
+      token: route.query.token,
+      refresh: route.query.refresh,
+    }),
+
   },
   // {
   //   // route level code-splitting
