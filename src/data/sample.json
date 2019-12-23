@@ -1,0 +1,88 @@
+{
+  "timestamp" : 1577071699273,
+  "context" : {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX9B1hu73DioC"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX9B1hu73DioC",
+    "type" : "playlist",
+    "uri" : "spotify:playlist:37i9dQZF1DX9B1hu73DioC"
+  },
+  "progress_ms" : 30457,
+  "item" : {
+    "album" : {
+      "album_type" : "single",
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/6DKmuXxXASTF6xaJwcTfjv"
+        },
+        "href" : "https://api.spotify.com/v1/artists/6DKmuXxXASTF6xaJwcTfjv",
+        "id" : "6DKmuXxXASTF6xaJwcTfjv",
+        "name" : "Spiritualized",
+        "type" : "artist",
+        "uri" : "spotify:artist:6DKmuXxXASTF6xaJwcTfjv"
+      } ],
+      "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "UY", "VN", "ZA" ],
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/album/7ztjR9QRu3A6eMEAEtFRlf"
+      },
+      "href" : "https://api.spotify.com/v1/albums/7ztjR9QRu3A6eMEAEtFRlf",
+      "id" : "7ztjR9QRu3A6eMEAEtFRlf",
+      "images" : [ {
+        "height" : 640,
+        "url" : "https://i.scdn.co/image/ab67616d0000b273069dc9b4c124cbc92afab22e",
+        "width" : 640
+      }, {
+        "height" : 300,
+        "url" : "https://i.scdn.co/image/ab67616d00001e02069dc9b4c124cbc92afab22e",
+        "width" : 300
+      }, {
+        "height" : 64,
+        "url" : "https://i.scdn.co/image/ab67616d00004851069dc9b4c124cbc92afab22e",
+        "width" : 64
+      } ],
+      "name" : "Here It Comes (The Road) Let's Go",
+      "release_date" : "2018-07-30",
+      "release_date_precision" : "day",
+      "total_tracks" : 1,
+      "type" : "album",
+      "uri" : "spotify:album:7ztjR9QRu3A6eMEAEtFRlf"
+    },
+    "artists" : [ {
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/artist/6DKmuXxXASTF6xaJwcTfjv"
+      },
+      "href" : "https://api.spotify.com/v1/artists/6DKmuXxXASTF6xaJwcTfjv",
+      "id" : "6DKmuXxXASTF6xaJwcTfjv",
+      "name" : "Spiritualized",
+      "type" : "artist",
+      "uri" : "spotify:artist:6DKmuXxXASTF6xaJwcTfjv"
+    } ],
+    "available_markets" : [ "AD", "AE", "AR", "AT", "AU", "BE", "BG", "BH", "BO", "BR", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "DZ", "EC", "EE", "EG", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IL", "IN", "IS", "IT", "JO", "JP", "KW", "LB", "LI", "LT", "LU", "LV", "MA", "MC", "MT", "MX", "MY", "NI", "NL", "NO", "NZ", "OM", "PA", "PE", "PH", "PL", "PS", "PT", "PY", "QA", "RO", "SA", "SE", "SG", "SK", "SV", "TH", "TN", "TR", "TW", "UY", "VN", "ZA" ],
+    "disc_number" : 1,
+    "duration_ms" : 281705,
+    "explicit" : false,
+    "external_ids" : {
+      "isrc" : "GBBRP1880003"
+    },
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/track/4xpx3cBdkzHR78IwDPjIGP"
+    },
+    "href" : "https://api.spotify.com/v1/tracks/4xpx3cBdkzHR78IwDPjIGP",
+    "id" : "4xpx3cBdkzHR78IwDPjIGP",
+    "is_local" : false,
+    "name" : "Here It Comes (The Road) Let's Go",
+    "popularity" : 32,
+    "preview_url" : "https://p.scdn.co/mp3-preview/673c29c209539f7a8ae448c82750c87ab559fe9e?cid=033d6ec7c9cc4245ab9c3b10b6d266ec",
+    "track_number" : 1,
+    "type" : "track",
+    "uri" : "spotify:track:4xpx3cBdkzHR78IwDPjIGP"
+  },
+  "currently_playing_type" : "track",
+  "actions" : {
+    "disallows" : {
+      "resuming" : true
+    }
+  },
+  "is_playing" : true
+}

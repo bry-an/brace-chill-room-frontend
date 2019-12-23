@@ -13,17 +13,22 @@
     <button @click="getCurrentPlayingTrack">
       Get My Current Track
     </button>
-    <div v-if="currentPlayingTrack.artist">
+    <div
+      class="playing"
+      v-if="currentPlayingTrack.artist"
+    >
       <img
         :src="currentPlayingTrack.albumImage"
         class="album-image"
       >
       <div>
         <h3>You are listening to:</h3>
-        {{ currentPlayingTrack.song }} by {{ currentPlayingTrack.artist }}
+        <b>{{ currentPlayingTrack.song }}</b> by <em>{{ currentPlayingTrack.artist }}</em>
         <h3>Current Time:</h3>
-        You are at {{ currentPlayingTrack.progress / 1000 }} of
-        {{ currentPlayingTrack.duration / 1000 }}
+        You are at {{ msToHumanReadable(currentPlayingTrack.progress) }} of
+        {{ msToHumanReadable(currentPlayingTrack.duration) }}
+        <h3>Current Status:</h3>
+        Your player is <b>{{ currentPlayingTrack.isPlaying ? 'playing' : 'paused' }}</b>
         <h3>Last Updated at: {{ new Date(currentPlayingTrack.lastUpdate) }}</h3>
       </div>
     </div>
@@ -33,6 +38,7 @@
 <script>
 // @ is an alias to /src
 import API from '@/utils/API';
+import sample from '@/data/sample.json';
 
 export default {
   name: 'Home',
@@ -46,6 +52,7 @@ export default {
       lastUpdate: null,
       song: null,
       albumImage: null,
+      isPlaying: null,
     },
   }),
   computed: {
@@ -69,20 +76,39 @@ export default {
       window.location = this.loginURL;
     },
     async getCurrentPlayingTrack() {
-      const currentTrack = await API.getCurrentPlayingTrack();
+      // const currentTrack = await API.getCurrentPlayingTrack();
+      const currentTrack = sample;
       this.currentPlayingTrack.artist = currentTrack.item.artists[0].name;
       this.currentPlayingTrack.song = currentTrack.item.name;
       this.currentPlayingTrack.progress = currentTrack.progress_ms;
       this.currentPlayingTrack.lastUpdate = currentTrack.timestamp;
       this.currentPlayingTrack.albumImage = currentTrack.item.album.images[0].url;
       this.currentPlayingTrack.duration = currentTrack.item.duration_ms;
+      this.currentPlayingTrack.isPlaying = currentTrack.is_playing;
     },
+    msToHumanReadable(milliseconds) {
+      const seconds = parseInt(milliseconds / 1000, 10);
+      if (seconds < 60) {
+        return `0:${seconds}`;
+      }
+      const minutes = parseInt(seconds / 60, 10);
+      let secondsRemaining = seconds % 60;
+      secondsRemaining = secondsRemaining < 10 ? `0${secondsRemaining}` : secondsRemaining;
+      return `${minutes}:${secondsRemaining}`;
+    },
+  },
+  mounted() {
+    if (API.checkLocalToken()) {
+      this.getCurrentPlayingTrack();
+    }
   },
 };
 </script>
 <style lang="sass" scoped>
+.playing
+  padding-top: 10px
 
-.album-image
-  width: 30vw
+  .album-image
+    width: 30vw
 
 </style>
