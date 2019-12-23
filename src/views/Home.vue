@@ -1,35 +1,66 @@
 <template>
   <div>
-    <div class="home">
-      <h1>Welcome to Brace Chill Room</h1>
-      👩‍🎤👨‍🎤
+    <div class="title">
+      <h1>Welcome to the Brace Chill Room 👩‍🎤 👨‍🎤</h1>
     </div>
-    <div>
+    <div v-if="!isLoggedIn">
       <h3>First, you should log in to spotify</h3>
       <button @click="login">
         Login to Spotify
       </button>
     </div>
     <button @click="getCurrentPlayingTrack">
-      Get My Current Track
+      {{ currentPlayingTrack ? 'Refresh' : 'Get' }} My Current Track
     </button>
-    <div
-      class="playing"
-      v-if="currentPlayingTrack.artist"
-    >
-      <img
-        :src="currentPlayingTrack.albumImage"
-        class="album-image"
+    <div v-if="isLoggedIn">
+      <div
+        class="playing container"
+        v-if="currentPlayingTrack.artist"
       >
-      <div>
-        <h3>You are listening to:</h3>
-        <b>{{ currentPlayingTrack.song }}</b> by <em>{{ currentPlayingTrack.artist }}</em>
-        <h3>Current Time:</h3>
-        You are at {{ msToHumanReadable(currentPlayingTrack.progress) }} of
-        {{ msToHumanReadable(currentPlayingTrack.duration) }}
-        <h3>Current Status:</h3>
-        Your player is <b>{{ currentPlayingTrack.isPlaying ? 'playing' : 'paused' }}</b>
-        <h3>Last Updated at: {{ new Date(currentPlayingTrack.lastUpdate) }}</h3>
+        <img
+          :src="currentPlayingTrack.albumImage"
+          class="album-image"
+        >
+
+        <div class="album-info">
+          <div>
+            <ul>
+              <li>
+                <b class="subtitle">Current Song</b>
+                {{ currentPlayingTrack.song }} by
+                <em>{{ currentPlayingTrack.artist }}</em>
+              </li>
+              <li>
+                <b class="subtitle">Current Time</b>
+                {{ msToHumanReadable(currentPlayingTrack.progress) }} of
+                {{ msToHumanReadable(currentPlayingTrack.duration) }}
+              </li>
+              <li>
+                <b class="subtitle">Current Status</b>
+                <i
+                  v-if="currentPlayingTrack.isPlaying"
+                  class="material-icons"
+                  style="vertical-align: bottom"
+                >play_circle_filled</i>
+                <i
+                  v-else-if="!currentPlayingTrack.isPlaying"
+                  class="material-icons"
+                  style="vertical-align: bottom"
+                >stop</i>
+              </li>
+            </ul>
+          </div>
+          <div class="last-updated">
+            <ul>
+              <li>
+                <em>Last Updated at: {{ new Date(currentPlayingTrack.lastUpdate) }}</em>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div v-else-if="!currentPlayingTrack.artist">
+        It appears that you're not currently listening to anything on Spotify. Lame.
       </div>
     </div>
   </div>
@@ -105,8 +136,28 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
+.title
+  margin-bottom: 10px
+
+.container
+  display: flex
+  align-items: center
+  margin: auto
+
 .playing
   padding-top: 10px
+  text-align: left
+
+  .subtitle
+    margin-right: 10px
+  ul
+    list-style: none
+  li
+    margin-bottom: 10px
+
+  .last-updated
+    align-self: flex-end
+    flex-grow: 2
 
   .album-image
     width: 30vw
